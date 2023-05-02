@@ -10,4 +10,8 @@ public interface MovieService {
 
     List<Movie> getAllMovies();
 
+    Movie updateMovie(Movie movie);
+
+    Movie getMovieById(long id);
+
 }
