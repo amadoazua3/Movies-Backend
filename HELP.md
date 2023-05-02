@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.example.movies-backend' is invalid and this project uses 'com.example.moviesbackend' instead.
+* The original package name 'com.example.movie-backend' is invalid and this project uses 'com.example.moviesbackend' instead.
 
 # Getting Started
 

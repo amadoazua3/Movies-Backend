@@ -1,13 +1,10 @@
 package com.moviesbackend.controller;
 
-import com.moviesbackend.model.Movies;
-import com.moviesbackend.repository.MoviesRepository;
+import com.moviesbackend.model.Movie;
+import com.moviesbackend.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,11 +14,16 @@ import java.util.List;
 public class MoviesController {
 
     @Autowired
-    private MoviesRepository moviesRepository;
+    private MovieService movieService;
 
     @GetMapping("/")
-    public ResponseEntity<List<Movies>> getAll() {
-        return ResponseEntity.ok().body(moviesRepository.findAll());
+    public ResponseEntity<List<Movie>> getAll() {
+        return ResponseEntity.ok().body(movieService.getAllMovies());
+    }
+
+    @PostMapping("/movie")
+    public ResponseEntity<Movie> createMovie(@RequestBody Movie movie) {
+        return ResponseEntity.ok().body(movieService.createMovie(movie));
     }
 
 }
