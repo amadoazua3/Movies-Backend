@@ -51,7 +51,17 @@ public class MovieServiceImpl implements MovieService {
 
     }
 
+    @Override
+    public void deleteMovie(long id) {
 
+        Optional<Movie> movieOptional = moviesRepository.findById(id);
 
+        if(movieOptional.isPresent()) {
+            moviesRepository.delete(movieOptional.get());
+        } else {
+            throw new ResourceNotFoundException(("Record not found with id: " + id));
+        }
+
+    }
 
 }

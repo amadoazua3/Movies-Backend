@@ -3,6 +3,7 @@ package com.moviesbackend.controller;
 import com.moviesbackend.model.Movie;
 import com.moviesbackend.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +36,12 @@ public class MoviesController {
     @GetMapping("/movie/{id}")
     public ResponseEntity<Movie> getMovieById(@PathVariable long id) {
         return ResponseEntity.ok().body(movieService.getMovieById(id));
+    }
+
+    @DeleteMapping("/movie/{id}")
+    public HttpStatus deleteMovie(@PathVariable long id) {
+        movieService.deleteMovie(id);
+        return HttpStatus.OK;
     }
 
 }
